@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spicevipe.com/">
+<meta property="og:title" content="Spicevipe!">
+<meta property="og:description" content="your favorite loaf of entertainment">
+<meta property="og:image" content="https://spicevipe.com/images/poster.png">
+<link href="https://fonts.googleapis.com/css2?family=Bubbler+One&display=swap" rel="stylesheet">
+    
+<link rel="shortcut icon" type="image/x-icon" href="/favicon_io/favicon.ico" />
+    
+
+  <title>BREAD'S ABODE</title>
+    
+    
+  <style type="text/css">
+    /* General Styles */
+    body {
+      margin: 0;
+  background: linear-gradient(to bottom, black 1000px, white 0);
+   cursor: url('breadcursor.ico') , default;
+    /* just change the cursor.ico path to your location */
+
+      }
+html {
+  scroll-behavior: smooth;
+}
+
+/* Bottom-Left Bar */
+.bottom-left-bar {
+  position: fixed; /* Sticks to a corner of the screen */
+  bottom: -20px; /* 20px from the bottom */
+  left: 0px; /* 20px from the left */
+  display: flex; /* Align items horizontally */
+  gap: 20px; /* Space between icons */
+  padding: 10px; /* Space inside the bar */
+  background: url('bottom-bar-base.png') no-repeat center center; /* Base image */
+  background-size: contain; /* Scale the background image */
+  width: 350px; /* Set the width of the bar */
+  height: 100px; /* Set the height of the bar */
+  z-index: 2000; /* Ensure it appears on top */
+  align-items: center; /* Vertically align the icons */
+}
+
+/* Icons in the Bottom Bar */
+.bottom-left-bar .icon {
+    margin-left:5px;
+  width: 70px; /* Size of each icon */
+  height: auto; /* Maintain aspect ratio */
+  transition: transform 0.2s ease; /* Add hover effect */
+}
+
+/* Icon Hover Effect */
+.bottom-left-bar a:hover .icon {
+  transform: scale(1.2); /* Slight zoom on hover */
+}
+
+
+/* Icon Container */
+.icon-container {
+  display: flex; /* Aligns icons horizontally */
+  gap: 20px; /* Space between icons */
+}
+
+/* Individual Icon Links */
+.icon-link {
+  text-align: center; /* Centers text below the icon */
+  text-decoration: none; /* Removes underline */
+  color: white; /* Text color */
+  font-family: Arial, sans-serif;
+  font-size: 0.9rem; /* Adjust font size */
+}
+
+.icon-link:hover {
+  color: #add8e6; /* Light blue on hover */
+}
+
+/* Icons */
+.icon {
+  width: 50px; /* Icon size */
+  height: auto; /* Maintain aspect ratio */
+  transition: transform 0.2s ease; /* Add a hover effect */
+}
+
+.icon-link:hover .icon {
+  transform: scale(1.1); /* Slight zoom on hover */
+}
+
+/* Sidebar Container */
+.sidebar {
+  position: fixed;
+  top: 50%; /* Center it vertically */
+  right: -80px; /* Partially hidden initially */
+  transform: translateY(-50%); /* Vertically align the bar */
+  width: 160px; /* Sidebar width */
+  height: auto; /* Adjust height automatically */
+  background: url('sidebar-base.png') no-repeat center center; /* Sidebar background */
+  background-size: 100%; /* Shrink the background image to 80% of the container */
+  background-repeat: no-repeat; /* Prevent tiling */
+  background-position: center; /* Center the image */
+  transition: right 0.3s ease; /* Smooth slide-out effect */
+  z-index: 1000; /* Ensure it's on top */
+}
+
+/* Show the Sidebar Fully on Hover */
+.sidebar:hover {
+  right: 0;
+}
+
+/* Icons inside the Sidebar */
+.sidebar a {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    
+}
+
+.sidebar a:last-child {
+  border-bottom: none;
+}
+
+/* Icon Images */
+.sidebar .icon {
+  width: 100px;
+  height: auto;
+  transition: transform 0.2s ease;
+
+}
+
+.sidebar a:hover .icon {
+  transform: scale(1.5);
+}
+    .wrapper {
+      height: 100vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+      perspective: 10px;
+    }
+
+    header {
+      position: relative;
+      display: flex;
+      flex-direction: column; /* Stack items vertically */
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      transform-style: preserve-3d;
+      z-index: -1;
+    }
+
+    .frontheader {
+      object-position: left;
+      transform: translateZ(-1px) scale(1);
+
+          object-position: left;
+  position: fixed;
+  margin-top: -300px; /* Adds space below the logo */
+  
+  /* Responsive sizing */
+  width: 84%
+    }
+
+    .back4 {
+      transform: translateZ(-20px) scale(3.5) translateY(0px);
+    }
+
+    .back3 {
+      transform: translateZ(-8px) scale(1.8) translateY(0px);
+    }
+
+    .back2 {
+      transform: translateZ(-6px) scale(1.6) translateY(50px) scaleY(.8);
+    }
+
+    .back1 {
+      transform: translateZ(-3px) scale(1.4) translateY(180px);
+    }
+
+    .back1,
+    .back2,
+    .back3,
+    .back4 {
+      position: absolute;
+      height: 90%;
+      width: 100%;
+      background-size: auto 100%; /* Maintain aspect ratio */
+      background-position: top; /* Align the images to the top */
+      z-index: -1;
+        
+    }
+
+    /* Updates Section with Bread Character */
+    .updates-container {
+      position: relative; /* Allows stacking of children inside */
+      width: 100%; /* Full width */
+      max-width: 800px; /* Limit width for layout consistency */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 250px; /* Space below the header */
+    }
+
+    .updates-container img.updates-bg {
+      width: 100%; /* Adjust width of the background image */
+      max-width: 600px; /* Control the size */
+      height: auto; /* Maintain aspect ratio */
+        
+      z-index: 1; /* Set the background image below the text box */
+    }
+
+    .textbox {
+         margin-top: 15px;
+        
+      position: absolute; /* Place on top of the "UPDATES" background image */
+      background-color: rgba(51, 51, 51, 0.0); /* Semi-transparent dark background */
+      color: white;
+      padding: 1rem;
+      border-radius: 10px;
+        font-size: 1.1rem;
+      overflow-y: auto; /* Enable scrolling for the text content */
+      max-height: 60px; /* Restrict height to make it scrollable */
+      width: 60%; /* Control the width relative to the background image */
+      max-width: 300px;
+      text-align: center;
+      z-index: 2; /* Set it above the background image */
+  font-family: "Bubbler One", serif;
+  font-style:normal;
+    }
+
+    .textbox h2 {
+      font-size: 1em;
+      color: #add8e6; /* Light blue title */
+      margin: 0 0 1rem 0;
+    }
+
+    .textbox ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .textbox ul li {
+      margin: 0.5rem 0;
+    }
+      .textbox .date {
+  color: #add8e6; /* Light blue for the dates */
+  font-weight: bold; /* Make the dates bold for emphasis */
+}
+          .textbox .serverstatus {
+  color: greenyellow; /* Light blue for the dates */
+  font-weight: bold; /* Make the dates bold for emphasis */
+}
+
+
+    /* Optional Animation for Bread Character */
+    .character {
+      height: 210px; /* Match the size you specified */
+      margin-left: 20px; /* Add spacing from the textbox/background */
+     margin-top:40px;
+              animation: bounce 2s infinite ease-in-out;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-3px);
+      }
+    }
+      .fashionad, .fashionadfront {
+        position:fixed;
+            /* Responsive sizing */
+  width: 1550px; /* Minimum 200px, scales with 50% of the viewport width, maximum 800px */
+  height: auto; /* Maintain the aspect ratio */
+            display: block; /* Removes inline spacing around the image */
+ 
+  margin: 0; /* Removes any margin that might create a gap */
+  padding: 0; /* Removes padding as well */
+          margin-top:1400px;
+      }
+      .scrolling-clothes {
+          position:fixed; /* Minimum 200px, scales with 50% of the viewport width, maximum 800px */
+
+  margin: 0; /* Removes any margin that might create a gap */
+
+          margin-top:1150px;
+}
+      
+      .fashionadfront{
+          
+          z-index:2;
+      }
+/* Styling for the Bouncing Sign */
+.bouncing-sign {
+    position:fixed;
+    margin-left:700px;
+    margin-top:2000px;
+  transform: translateY(0); /* Initial position for the bounce effect */
+  z-index: 2000; /* Place it above other elements */
+  transition: transform 0.3s ease; /* Smooth transition on hover */
+            /* Responsive sizing */
+
+}
+
+/* Sign Image */
+.bouncing-sign img {
+  width: 450px; /* Set the size of the sign */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Hover Effect: Bounce */
+.bouncing-sign:hover {
+  animation: bounce 0.6s ease-in-out infinite; /* Bounce animation on hover */
+}
+
+/* Keyframes for Bounce Animation */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0); /* Starting and ending at the same position */
+  }
+  50% {
+    transform: translateY(-10px); /* Move up slightly */
+  }
+}
+.scrolling-clothes img {
+  position: fixed; /* For animation */
+  width: 2200px;
+
+  animation: scroll-horizontal 10s linear infinite; /* Infinite scrolling animation */
+}
+      /* Scrolling Animation */
+@keyframes scroll-horizontal {
+  from {
+    transform: translateX(-64%); /* Start fully outside on the left */
+  }
+  to {
+    transform: translateX(-30%); /* End fully outside on the right */
+  }
+}
+.purple-box , .limitedtime{
+    position:absolute;
+  width: 100%; /* Make it span the entire width of the page */
+  height: 50px; /* Set the height of the box */
+  background-color: purple; /* Set the background color */
+  margin-top: 2150px; /* Add space above the box if needed */
+    z-index: 1;
+}
+.darkdivider {
+
+  width: 100%; /* Ensure the image spans the full width of the page */
+  height: auto; /* Automatically adjust height to maintain aspect ratio */
+  object-fit: contain; /* Ensures the entire image is visible */
+  margin: 0 auto; /* Centers the image horizontally */
+}
+      .darkdiv1{
+            position:fixed;
+          margin-top:2400px;
+          
+      }
+      
+/*               <!-- FILM -->   */
+      .filmpart {
+         position: fixed;
+    margin-top:3400px;
+width:1500px;
+            pointer-events: none;
+      }
+      
+      .filmback1{
+        transform: translateZ(-5px) scale(1.4);         
+      }
+      
+      .filmbread {
+          width:650px;
+  transform-origin: 100px 0px; /* Set the anchor point for the sway */
+           margin-top:3200px;
+          margin-left:-600px;
+  animation: sway 3s ease-in-out infinite; /* Infinite sway animation */
+
+}
+
+@keyframes sway {
+  0% {
+    transform: rotate(-3deg); /* Start slightly tilted left */
+  }
+  50% {
+    transform: rotate(3deg); /* Sway to the right */
+  }
+  100% {
+    transform: rotate(-3deg); /* Back to the left */
+  }
+}
+
+      .filmcamlight{
+            position: absolute;
+           /* mix-blend-mode: color-dodge;
+margin-left:135px;
+    margin-top:875px; */
+      }
+      video {
+          
+        position:fixed;
+      height: auto; /* Maintain aspect ratio */
+      border-radius: 10px; /* Rounded corners */
+    }
+      
+        .video-section {
+      text-align: center;
+      padding: 20px;
+    position:absolute;
+            margin-top:4150px;
+            margin-left:700px;
+            z-index:10;
+    }
+
+    .video-section h2 {
+      font-size: 2em;
+      color: #ff00a0;
+    }
+
+    .video-grid {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 20px;
+    }
+
+    .video-grid iframe {
+      width: 320px;
+      height: 180px;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+      .ahth{
+          
+          width:auto;
+      }
+      /* Styling for the logo */
+.ahthlogo {
+  transform-origin: center; /* Anchor point for squash/stretch */
+  animation: bounce-squash 3.5s ease-in-out infinite; /* Bounce animation */
+    margin-left:-960px;
+    margin-top:5660px;
+}
+
+/* Keyframes for the bounce animation */
+@keyframes bounce-squash {
+  0%, 100% {
+    transform: scale(1) translateY(0); /* Normal size */
+  }
+  25% {
+    transform: scale(1.1, 0.9) translateY(10px); /* Stretch horizontally and squash vertically */
+  }
+  50% {
+    transform: scale(0.9, 1.1) translateY(-10px); /* Squash horizontally and stretch vertically */
+  }
+  75% {
+    transform: scale(1.05, 0.95) translateY(5px); /* Slight stretch again */
+  }
+}
+
+      .end{
+          position:fixed;
+          width:100%;
+              height:auto;
+          
+      }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <img src="back4.png" class="back4">
+      <img src="back3.png" class="back3">
+      <img src="back2.png" class="back2">
+      <img src="back1.png" class="back1">
+      <img src="spicebanner.gif" class="frontheader" loop="-1" />   
+        
+      <!-- Updates Section -->
+      <div class="updates-container">
+        <!-- Background Image for Updates -->
+        <img src="backvoid.png" class="updates-bg" />
+        
+        <!-- Scrollable Textbox -->
+       <div class="textbox">
+          <h2>WELCOME 🥰 Breadservers are <span class="serverstatus">ONLINE</span></h2>
+  <ul>
+    <li><span class="date">12/24/24</span> - Website up and running</li>
+    <li><span class="date">12/12/24</span> - spicevipe.com Bought!</li>
+    <li><span class="date">0/1/-1</span> - Spicevipe spawned on planet X0-A48 (Birth)</li>
+  </ul>
+</div>
+
+        <!-- Bread Construction Character -->
+        <img src="constuctbread.png" alt="Bread Character" class="character"/>
+      </div> 
+        
+                <!-- FASHION ADD  -->
+<img src="fashionad.png" id="fashionad" width="200" class="fashionad" />
+<img src="fashionadfront.png" width="200" class="fashionadfront" />
+<div class="scrolling-clothes">
+  <img src="scrollingclothes.png" width="500" alt="Scrolling Clothes" />
+</div>
+        <a href="https://depop.com/spicewrldwear" target="_blank" class="bouncing-sign">
+  <img src="spicewrld-sign.png" alt="Spicewrld Sign" />
+</a>
+          <div class="purple-box"></div>
+         <img src="limitedtime.gif" class="limitedtime" />
+        <img src="spicedividermid-blacktop.png" class="darkdivider darkdiv1"/>
+    
+              <!-- FILM -->
+                <img src="filmlogo.png" id="filmlogo" class="filmpart" style="transform: translateY(100px) translateX(30px) scale(1); z-index: 100;">
+                        <img src="featuredfilmandmore.png" class="filmpart" style="transform: translateY(30px) translateX(30px) scale(.9); z-index: 100;">
+                        <img src="filmvidshine.gif" class="filmpart" style="transform: translateY(-90px) translateX(360px) scale(.5); z-index: -1;">
+        
+        <img src="breadchandelier.gif" class="filmpart filmbread" style="transform: scale(.5);">
+          <img src="filmcamlight.png" class="filmbread filmcamlight" style="transform: scale(1);">
+        
+                  <img src="filmcamlight.png" class="filmbread filmcamlight" style="transform: scale(1);">
+        
+ <div class="video-section">
+
+      <!-- Replace YOURCHANNELNAME with spicevipe -->
+      <iframe src="https://www.youtube.com/embed/Vqe4WnUEYYM" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/-EFm56BUlqA" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/pSyAaQwEbks" allowfullscreen></iframe>
+</div>
+        
+       <img src="theaterbackground.png" class="filmpart" style="transform: translateZ(-4px) scale(1.5);">
+        <img src="backbackseats.png" class="filmpart" style="transform: translateZ(-2px) scale(1);"> 
+        <img src="backseats.png" class="filmpart" style="transform: translateZ(-1px) scale(1);">
+        <img src="frontseats.png" class="filmpart" style="transform: translateZ(0px) scale(1);">
+<img src="frontfrontseats.png" class="filmpart" style="transform: translateZ(1px) scale(1);">
+<img src="backchand.png" class="filmpart" style="transform: translateZ(-1px) translateY(-80px) translateX(50px);">
+        <img src="backbackchand.png" class="filmpart" style="transform: translateZ(-2.5px) translateY(-100px) scale(1);">
+        
+<video controls style="transform: translateY(1410px) translateX(380px);" width="470px" z-index="-10" poster="thumb_demon.png">
+  <source src="technicaldemontries.mp4" type="video/mp4">
+</video>
+        <video controls style="transform: translateY(1720px) translateX(380px);" width="430px" z-index="100" poster="thumb_newyears.png">
+  <source src="newyears2.mp4" type="video/mp4">
+</video>
+        
+        <video controls style="transform: translateY(2830px)" width="500px" poster="thumb_ahth.png">
+  <source src="ahthreveal.mp4" type="video/mp4">
+</video>
+        <img src="ahthcomingsoon.png" class="filmpart ahth cominsoon" width="auto" height="250" 
+             style="transform: translateX(500px) translateY(1160px)" z-index="200">
+        
+          <img src="ahthlogo.png" class="filmpart ahth ahthlogo" width="auto" height="250" 
+             style="transform: translateX(-500px) translateY(1160px)" z-index="200">
+        
+                <img src="ahthoverlay.png" class="filmpart" style="transform: scale(1.1) translateY(1030px)" width="100%" height="580px">
+        <img src="AHTHPREV.gif" id="ahth" class="filmpart" style="transform: translateZ(-0.5px) scale(1.15) translateY(1000px)" width="100%" height="500px">
+               
+        
+        <img src="pageending.png" class="end" style="transform: translateY(3400px)">
+    </header>
+      
+   <!--  <img src="filmcamlight.png" class="filmbread filmcamlight" style="transform: scale(1);"> -->
+  </div>
+    
+    
+<div class="sidebar">
+  <!-- Update the href to point to #fashionad -->
+  <a href="#fashionad">
+    <img src="sidebar-clothes.png" alt="clothes" class="icon" />
+  </a>
+  <a href="#filmlogo">
+    <img src="sidebar-film.png" alt="film" class="icon" />
+  </a>
+  <a href="#ahth">
+    <img src="sidebar-games.png" alt="games" class="icon" />
+  </a>
+  <a href="https://www.patreon.com/c/spicevipe" target="_blank">
+    <img src="sidebar-art.png" alt="art" class="icon" />
+  </a>
+</div>
+    
+<!-- Bottom-Left Bar -->
+<div class="bottom-left-bar">
+  <a href="https://youtube.com/spicevipe" target="_blank">
+    <img src="youtube-icon.png" alt="YouTube" class="icon" />
+  </a>
+  <a href="https://instagram.com/spicevipe" target="_blank">
+    <img src="instagram-icon.png" alt="Instagram" class="icon" />
+  </a>
+  <a href="https://discord.gg/aC3v7YJbuY" target="_blank">
+    <img src="discord-icon.png" alt="Discord" class="icon" />
+  </a>
+  <a href="https://x.com/spicevipe" target="_blank">
+    <img src="x-icon.png" alt="X" class="icon" />
+  </a>
+</div>
+
+
+</body>
+</html>

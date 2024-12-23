@@ -1,0 +1,262 @@
+
+    /* General Styles */
+    body {
+      margin: 0;
+
+   cursor: url('breadcursor.ico') , default;
+    /* just change the cursor.ico path to your location */
+
+      }
+/* Bottom-Left Bar */
+.bottom-left-bar {
+  position: fixed; /* Sticks to a corner of the screen */
+  bottom: -20px; /* 20px from the bottom */
+  left: 0px; /* 20px from the left */
+  display: flex; /* Align items horizontally */
+  gap: 20px; /* Space between icons */
+  padding: 10px; /* Space inside the bar */
+  background: url('bottom-bar-base.png') no-repeat center center; /* Base image */
+  background-size: contain; /* Scale the background image */
+  width: 350px; /* Set the width of the bar */
+  height: 100px; /* Set the height of the bar */
+  z-index: 2000; /* Ensure it appears on top */
+  align-items: center; /* Vertically align the icons */
+}
+
+/* Icons in the Bottom Bar */
+.bottom-left-bar .icon {
+    margin-left:5px;
+  width: 70px; /* Size of each icon */
+  height: auto; /* Maintain aspect ratio */
+  transition: transform 0.2s ease; /* Add hover effect */
+}
+
+/* Icon Hover Effect */
+.bottom-left-bar a:hover .icon {
+  transform: scale(1.2); /* Slight zoom on hover */
+}
+
+
+/* Icon Container */
+.icon-container {
+  display: flex; /* Aligns icons horizontally */
+  gap: 20px; /* Space between icons */
+}
+
+/* Individual Icon Links */
+.icon-link {
+  text-align: center; /* Centers text below the icon */
+  text-decoration: none; /* Removes underline */
+  color: white; /* Text color */
+  font-family: Arial, sans-serif;
+  font-size: 0.9rem; /* Adjust font size */
+}
+
+.icon-link:hover {
+  color: #add8e6; /* Light blue on hover */
+}
+
+/* Icons */
+.icon {
+  width: 50px; /* Icon size */
+  height: auto; /* Maintain aspect ratio */
+  transition: transform 0.2s ease; /* Add a hover effect */
+}
+
+.icon-link:hover .icon {
+  transform: scale(1.1); /* Slight zoom on hover */
+}
+
+/* Sidebar Container */
+.sidebar {
+  position: fixed;
+  top: 50%; /* Center it vertically */
+  right: -80px; /* Partially hidden initially */
+  transform: translateY(-50%); /* Vertically align the bar */
+  width: 160px; /* Sidebar width */
+  height: auto; /* Adjust height automatically */
+  background: url('sidebar-base.png') no-repeat center center; /* Sidebar background */
+  background-size: 100%; /* Shrink the background image to 80% of the container */
+  background-repeat: no-repeat; /* Prevent tiling */
+  background-position: center; /* Center the image */
+  transition: right 0.3s ease; /* Smooth slide-out effect */
+  z-index: 1000; /* Ensure it's on top */
+}
+
+/* Show the Sidebar Fully on Hover */
+.sidebar:hover {
+  right: 0;
+}
+
+/* Icons inside the Sidebar */
+.sidebar a {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    
+}
+
+.sidebar a:last-child {
+  border-bottom: none;
+}
+
+/* Icon Images */
+.sidebar .icon {
+  width: 100px;
+  height: auto;
+  transition: transform 0.2s ease;
+
+}
+
+.sidebar a:hover .icon {
+  transform: scale(1.5);
+}
+    .wrapper {
+      height: 100vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+      perspective: 10px;
+    }
+
+    header {
+      position: relative;
+      display: flex;
+      flex-direction: column; /* Stack items vertically */
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      transform-style: preserve-3d;
+      z-index: -1;
+    }
+
+    .frontheader {
+      object-position: left;
+      transform: translateZ(0) scale(1);
+      position: relative; /* Keeps it within stacking context */
+      margin-bottom: 20px; /* Adds space below the logo */
+        margin-top: -180px;
+          object-position: left;
+  position: relative; /* Keeps it within stacking context */
+  margin-bottom: 20px; /* Adds space below the logo */
+  
+  /* Responsive sizing */
+  width: clamp(200px, 200vw, 1000px); /* Minimum 200px, scales with 50% of the viewport width, maximum 800px */
+  height: auto; /* Maintain the aspect ratio */
+    }
+
+    .back4 {
+      transform: translateZ(-20px) scale(3.5) translateY(0px);
+    }
+
+    .back3 {
+      transform: translateZ(-8px) scale(1.8) translateY(0px);
+    }
+
+    .back2 {
+      transform: translateZ(-6px) scale(1.6) translateY(50px) scaleY(.8);
+    }
+
+    .back1 {
+      transform: translateZ(-3px) scale(1.4) translateY(180px);
+    }
+
+    .back1,
+    .back2,
+    .back3,
+    .back4 {
+      position: absolute;
+      height: 90%;
+      width: 100%;
+      background-size: auto 100%; /* Maintain aspect ratio */
+      background-position: top; /* Align the images to the top */
+      z-index: -1;
+    }
+
+    /* Updates Section with Bread Character */
+    .updates-container {
+      position: relative; /* Allows stacking of children inside */
+      width: 100%; /* Full width */
+      max-width: 800px; /* Limit width for layout consistency */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: -50px; /* Space below the header */
+    }
+
+    .updates-container img.updates-bg {
+      width: 100%; /* Adjust width of the background image */
+      max-width: 600px; /* Control the size */
+      height: auto; /* Maintain aspect ratio */
+      z-index: 1; /* Set the background image below the text box */
+    }
+
+    .textbox {
+         margin-top: 15px;
+        
+      position: absolute; /* Place on top of the "UPDATES" background image */
+      background-color: rgba(51, 51, 51, 0.0); /* Semi-transparent dark background */
+      color: white;
+      padding: 1rem;
+      border-radius: 10px;
+        font-size: 1.1rem;
+      overflow-y: auto; /* Enable scrolling for the text content */
+      max-height: 60px; /* Restrict height to make it scrollable */
+      width: 60%; /* Control the width relative to the background image */
+      max-width: 300px;
+      text-align: center;
+      z-index: 2; /* Set it above the background image */
+    }
+
+    .textbox h2 {
+      font-size: 1em;
+      color: #add8e6; /* Light blue title */
+      margin: 0 0 1rem 0;
+    }
+
+    .textbox ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .textbox ul li {
+      margin: 0.5rem 0;
+    }
+      .textbox .date {
+  color: #add8e6; /* Light blue for the dates */
+  font-weight: bold; /* Make the dates bold for emphasis */
+}
+          .textbox .serverstatus {
+  color: greenyellow; /* Light blue for the dates */
+  font-weight: bold; /* Make the dates bold for emphasis */
+}
+
+
+    /* Optional Animation for Bread Character */
+    .character {
+      height: 210px; /* Match the size you specified */
+      margin-left: 20px; /* Add spacing from the textbox/background */
+     margin-top:40px;
+              animation: bounce 2s infinite ease-in-out;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-3px);
+      }
+    }
+      .fashionad {
+        position:fixed;
+            /* Responsive sizing */
+  width: clamp(200px, 200vw, 1550px); /* Minimum 200px, scales with 50% of the viewport width, maximum 800px */
+  height: auto; /* Maintain the aspect ratio */
+            display: block; /* Removes inline spacing around the image */
+ 
+  margin: 0; /* Removes any margin that might create a gap */
+  padding: 0; /* Removes padding as well */
+          margin-top:1400px;
+      }
