@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>shume te dua</title>
+
+  <style>
+    /* ---------- INFINITE SCROLL SYSTEM ---------- */
+    .scroll-wrap{ overflow:hidden; width:100%; }
+    .scroll-track{
+      display:flex;
+      width:max-content;
+      animation: scroll-right var(--speed, 20s) linear infinite;
+    }
+    .scroll-track img{ display:block; height:auto; margin:0; }
+    @keyframes scroll-right{
+      from{ transform: translateX(0); }
+      to{ transform: translateX(-50%); }
+    }
+
+    html, body{ margin:0; padding:0; background:#fff; color:#000; }
+
+    :root{
+      --poster-width: 1000px;
+      --default-w: 1;
+      --default-pt: 0px;
+      --default-pb: 0px;
+    }
+
+    .page{ max-width: var(--poster-width); margin:0 auto; text-align:center; }
+    .block{ padding-top: var(--pt, var(--default-pt)); padding-bottom: var(--pb, var(--default-pb)); }
+
+    .block img{
+      display:block;
+      margin:0 auto;
+      width: calc(60% * var(--w, var(--default-w)));
+      height:auto;
+    }
+
+    .typewriter{
+      font-family:"Courier New", Courier, monospace;
+      font-size:26px;
+      line-height:1.15;
+      letter-spacing:0.02em;
+      white-space:pre-line;
+      margin:0;
+    }
+    .yo{
+      font-family:"Courier New", Courier, monospace;
+      font-size:30px;
+      letter-spacing:0.08em;
+      margin:0;
+    }
+
+    /* make the wheel clearly clickable */
+    #wheel{ cursor:pointer; }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <section class="block" style="--pt:0px; --pb:0px; --w:0.8;">
+      <img src="images/topface.png" alt="">
+    </section>
+
+    <section class="block" style="--pt:18px; --pb:18px;">
+      <div class="typewriter">shume te dua
+shume te dua...</div>
+    </section>
+
+    <section class="block" style="--pt:0px; --pb:20px;">
+      <div class="scroll-wrap">
+        <div class="scroll-track" style="--speed: 10s;">
+          <img src="images/derpdivider.png" alt="">
+          <img src="images/derpdivider.png" alt="">
+        </div>
+      </div>
+    </section>
+
+    <section class="block" style="--pt:0px; --pb:24px; --w:1;">
+      <img src="images/textglitched.png" alt="">
+    </section>
+
+    <section class="block" style="--pt:0px; --pb:12px; --w:1.2;">
+      <img src="images/spinwheeltext.png" alt="">
+    </section>
+
+    <!-- WHEEL IMAGE (CLICK TO SPIN) -->
+    <section class="block" style="--pt:0px; --pb:28px;">
+      <img id="wheel" src="images/spinthewheel.png" alt="">
+    </section>
+
+    <section class="block" style="--pt:0px; --pb:10px; --w:1;">
+      <img src="images/textglitched.png" alt="">
+    </section>
+
+    <section class="block" style="--pt:10px; --pb:34px; --w:1.5;">
+      <img src="images/adbanners.gif" alt="">
+    </section>
+
+    <section class="block" style="--pt:0px; --pb:18px;">
+      <div class="typewriter">shume te dua
+shume te dua...</div>
+    </section>
+
+    <section class="block" style="--pt:10px; --pb:80px;">
+      <div class="yo">hi</div>
+    </section>
+
+  </main>
+
+  <!-- SCRIPT AT BOTTOM so the wheel exists before JS runs -->
+  <script>
+    (function(){
+      const wheel = document.getElementById("wheel");
+      if(!wheel) return;
+
+      const STILL = "images/spinthewheel.png";
+      const GIF   = "images/spinningwheel.gif";
+      const DURATION_MS = 2400;
+
+      function spinWheel(){
+        if (wheel.dataset.spinning === "true") return;
+        wheel.dataset.spinning = "true";
+
+        // cache-bust so the GIF restarts every click
+        wheel.src = GIF + "?t=" + Date.now();
+
+        setTimeout(() => {
+          wheel.src = STILL;
+          wheel.dataset.spinning = "false";
+        }, DURATION_MS);
+      }
+
+      wheel.addEventListener("click", spinWheel);
+    })();
+  </script>
+</body>
+</html>
