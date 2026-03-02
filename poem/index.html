@@ -6,6 +6,7 @@
   <title>shume te dua</title>
 
   <style>
+    /* ---------- INFINITE SCROLL SYSTEM ---------- */
     .scroll-wrap{ overflow:hidden; width:100%; }
     .scroll-track{
       display:flex;
@@ -52,6 +53,7 @@
       margin:0;
     }
 
+    /* make the wheel clearly clickable */
     #wheel{ cursor:pointer; }
   </style>
 </head>
@@ -60,7 +62,7 @@
   <main class="page">
 
     <section class="block" style="--pt:0px; --pb:0px; --w:0.8;">
-      <img src="/poem/images/topface.png" alt="">
+      <img src="images/topface.png" alt="">
     </section>
 
     <section class="block" style="--pt:18px; --pb:18px;">
@@ -71,30 +73,31 @@ shume te dua...</div>
     <section class="block" style="--pt:0px; --pb:20px;">
       <div class="scroll-wrap">
         <div class="scroll-track" style="--speed: 10s;">
-          <img src="/poem/images/derpdivider.png" alt="">
-          <img src="/poem/images/derpdivider.png" alt="">
+          <img src="images/derpdivider.png" alt="">
+          <img src="images/derpdivider.png" alt="">
         </div>
       </div>
     </section>
 
     <section class="block" style="--pt:0px; --pb:24px; --w:1;">
-      <img src="/poem/images/textglitched.png" alt="">
+      <img src="images/textglitched.png" alt="">
     </section>
 
     <section class="block" style="--pt:0px; --pb:12px; --w:1.2;">
-      <img src="/poem/images/spinwheeltext.png" alt="">
+      <img src="images/spinwheeltext.png" alt="">
     </section>
 
+    <!-- WHEEL IMAGE (CLICK TO SPIN) -->
     <section class="block" style="--pt:0px; --pb:28px;">
-      <img id="wheel" src="/poem/images/spinthewheel.png" alt="">
+      <img id="wheel" src="images/spinthewheel.png" alt="">
     </section>
 
     <section class="block" style="--pt:0px; --pb:10px; --w:1;">
-      <img src="/poem/images/textglitched.png" alt="">
+      <img src="images/textglitched.png" alt="">
     </section>
 
     <section class="block" style="--pt:10px; --pb:34px; --w:1.5;">
-      <img src="/poem/images/adbanners.gif" alt="">
+      <img src="images/adbanners.gif" alt="">
     </section>
 
     <section class="block" style="--pt:0px; --pb:18px;">
@@ -108,19 +111,21 @@ shume te dua...</div>
 
   </main>
 
+  <!-- SCRIPT AT BOTTOM so the wheel exists before JS runs -->
   <script>
     (function(){
       const wheel = document.getElementById("wheel");
       if(!wheel) return;
 
-      const STILL = "/poem/images/spinthewheel.png";
-      const GIF   = "/poem/images/spinningwheel.gif";
+      const STILL = "images/spinthewheel.png";
+      const GIF   = "images/spinningwheel.gif";
       const DURATION_MS = 2400;
 
       function spinWheel(){
         if (wheel.dataset.spinning === "true") return;
         wheel.dataset.spinning = "true";
 
+        // cache-bust so the GIF restarts every click
         wheel.src = GIF + "?t=" + Date.now();
 
         setTimeout(() => {
